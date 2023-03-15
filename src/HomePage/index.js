@@ -13,7 +13,9 @@ import {
 import React from "react";
 
 export default function HomePage() {
-  const [tshirts, setTshirts] = React.useState([]);
+  const [tshirts, setTshirts] = React.useState([
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
+  ]);
 
   React.useEffect(() => {
     async function fetchTshirts() {
@@ -21,7 +23,7 @@ export default function HomePage() {
       const tshirts = await response.json();
       setTshirts(tshirts);
     }
-    fetchTshirts();
+    // fetchTshirts();
   }, []);
 
   return (
