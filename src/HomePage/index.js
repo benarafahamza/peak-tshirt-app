@@ -17,15 +17,15 @@ export default function HomePage() {
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
   ]);
 
-  React.useEffect(() => {
+  /*React.useEffect(() => {
     async function fetchTshirts() {
       const response = await fetch("http://localhost:3001/tshirts");
       const tshirts = await response.json();
       setTshirts(tshirts);
     }
-    // fetchTshirts();
+    fetchTshirts();
   }, []);
-
+*/
   return (
     <>
       <AppBar position="sticky">
