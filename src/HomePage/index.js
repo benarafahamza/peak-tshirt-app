@@ -1,18 +1,32 @@
 import { Mail } from "@mui/icons-material";
+import ThirtCard from "../TshirtCard";
+
 import {
   AppBar,
   Badge,
   Box,
+  Grid,
   IconButton,
   Toolbar,
   Typography,
 } from "@mui/material";
-import Image from "mui-image";
-import logo from "../images/1.jpg";
+import React from "react";
+
 export default function HomePage() {
+  const [tshirts, setTshirts] = React.useState([]);
+
+  React.useEffect(() => {
+    async function fetchTshirts() {
+      const response = await fetch("http://localhost:3001/tshirts");
+      const tshirts = await response.json();
+      setTshirts(tshirts);
+    }
+    fetchTshirts();
+  }, []);
+
   return (
     <>
-      <AppBar position="static">
+      <AppBar position="sticky">
         <Toolbar>
           <Typography variant="h6" component="h1">
             Peak Shirt
@@ -31,9 +45,13 @@ export default function HomePage() {
           </Box>
         </Toolbar>
       </AppBar>
-      <Image src={logo} duration={0} alt="Peak shirt logo" />
-
-      <p>Construction en cours...</p>
+      <Grid container spacing={2}>
+        {tshirts.map((value) => (
+          <Grid item xs={6} key={value}>
+            <ThirtCard />
+          </Grid>
+        ))}
+      </Grid>
     </>
   );
 }
