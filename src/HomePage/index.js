@@ -1,34 +1,23 @@
 import { Mail } from "@mui/icons-material";
-import ThirtCard from "../TshirtCard";
-
+import { useTshirts } from "hooks";
 import {
   AppBar,
   Badge,
   Box,
+  CircularProgress,
   Grid,
   IconButton,
   Toolbar,
   Typography,
 } from "@mui/material";
 import React from "react";
+import ThirtCard from "../TshirtCard";
 
 export default function HomePage() {
-  const [tshirts] = React.useState([
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
-  ]);
-
-  /*React.useEffect(() => {
-    async function fetchTshirts() {
-      const response = await fetch("http://localhost:3001/tshirts");
-      const tshirts = await response.json();
-      setTshirts(tshirts);
-    }
-    fetchTshirts();
-  }, []);
-*/
+  const { isLoading, tshirts } = useTshirts();
   return (
     <>
-      <AppBar position="sticky">
+      <AppBar>
         <Toolbar>
           <Typography variant="h6" component="h1">
             Peak Shirt
@@ -47,13 +36,17 @@ export default function HomePage() {
           </Box>
         </Toolbar>
       </AppBar>
-      <Grid container spacing={2}>
-        {tshirts.map((value) => (
-          <Grid item xs={6} key={value}>
-            <ThirtCard />
-          </Grid>
-        ))}
-      </Grid>
+      {isLoading ? (
+        <CircularProgress />
+      ) : (
+        <Grid container spacing={2}>
+          {tshirts.map((value) => (
+            <Grid item xs={6} key={value}>
+              <ThirtCard />
+            </Grid>
+          ))}
+        </Grid>
+      )}
     </>
   );
 }
