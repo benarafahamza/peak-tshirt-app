@@ -1,35 +1,59 @@
 import {
-  Button,
   Card,
-  CardActions,
   CardContent,
   CardMedia,
+  Chip,
+  Grid,
   Typography,
 } from "@mui/material";
 
-import TshirtImage from "../images/1.jpg";
+import Price from "Price";
 
-export default function tshirtCard() {
+import { string, number, oneOf } from "prop-types";
+
+export default function TshirtCard({
+  id,
+  name,
+  imageUrl,
+  description,
+  size,
+  price,
+}) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
-        sx={{ height: 140 }}
-        image={TshirtImage}
-        title="green iguana"
+        component="img"
+        height="140"
+        image={`/images/${imageUrl}`}
+        alt={name}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          {name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          {description}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
+      <Grid container justifyContent="space-between">
+        <Grid item>
+          <Chip label={`Taille : ${size}`} size="small" />
+        </Grid>
+        <Grid item>
+          <Typography>
+            <Price value={price} />
+          </Typography>
+        </Grid>
+      </Grid>
     </Card>
   );
 }
+
+TshirtCard.propTypes = {
+  id: number,
+  name: string,
+  imageUrl: string,
+  description: string,
+  size: oneOf(["S", "M", "L", "XL"]),
+  price: number,
+};
