@@ -4,6 +4,12 @@
 
 ## Getting Started
 
+Create a `.env` file with :
+
+```
+API_BASE_URL="http://localhost:3001"
+```
+
 Install dependencies:
 
 ```shell

@@ -6,7 +6,7 @@ export default function Price({ value, currency = "EUR" }) {
     currency,
   }).format(value);
 }
-Price.PropTypes = {
+Price.propTypes = {
   value: number,
   currency: string,
 };

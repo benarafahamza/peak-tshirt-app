@@ -1,5 +1,5 @@
 import { Mail } from "@mui/icons-material";
-import { useTshirts } from "hooks";
+import { useTshirts } from "core/hooks";
 import {
   AppBar,
   Badge,
