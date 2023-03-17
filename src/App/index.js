@@ -10,7 +10,34 @@ import { QueryClientProvider, QueryClient } from "react-query";
 
 import HomePage from "../HomePage";
 import theme from "./theme";
-const queryClient = new QueryClient();
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import TshirtPage from "TshirtPage";
+import Layout from "Layout";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 0,
+    },
+  },
+});
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: "/tshirt/:tshirtId",
+        element: <TshirtPage />,
+      },
+    ],
+  },
+]);
 
 export default function App() {
   return (
@@ -18,7 +45,7 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <FilterProvider>
           <CssBaseline />
-          <HomePage />
+          <RouterProvider router={router} />
         </FilterProvider>
       </ThemeProvider>
     </QueryClientProvider>
