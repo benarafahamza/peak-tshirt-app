@@ -5,6 +5,18 @@ const API_BASE_URL = config.get(
   "API_BASE_URL",
   process.env.REACT_APP_API_BASE_URL
 );
+
 export const tshirts = {
-  getList: () => () => fetch(`${API_BASE_URL}/tshirts`).then(responseToJson),
+  getList: (selectedStyles) => () => {
+    let tshirtRouteApi = `${API_BASE_URL}/tshirts`;
+
+    if (selectedStyles.size > 0) {
+      const queryString = new URLSearchParams(
+        [...selectedStyles].map((s) => ["styleId", s])
+      );
+      tshirtRouteApi = tshirtRouteApi + "?" + queryString;
+    }
+
+    return fetch(tshirtRouteApi).then(responseToJson);
+  },
 };

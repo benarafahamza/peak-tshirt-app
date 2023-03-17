@@ -1,6 +1,5 @@
 import {
   Card,
-  CardActionArea,
   CardActions,
   CardContent,
   CardMedia,
@@ -23,21 +22,19 @@ export default function TshirtCard({
 }) {
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image={`/images/${imageUrl}`}
-          alt={name}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {name}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {description}
-          </Typography>
-        </CardContent>
+      <CardMedia
+        component="img"
+        height="140"
+        image={`/images/${imageUrl}`}
+        alt={name}
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {name}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {description}
+        </Typography>
         <Grid container justifyContent="space-between">
           <Grid item>
             <Chip label={`Taille : ${size}`} size="small" />
@@ -48,7 +45,7 @@ export default function TshirtCard({
             </Typography>
           </Grid>
         </Grid>
-      </CardActionArea>
+      </CardContent>
       <CardActions />
     </Card>
   );

@@ -12,11 +12,15 @@ import {
 } from "@mui/material";
 import React from "react";
 import ThirtCard from "../TshirtCard";
+import StyleFilters from "StyleFilters";
+import { useStyleFilters } from "core/contexts";
 
 export default function HomePage() {
-  const { isLoading, tshirts } = useTshirts();
+  const [selectedStyles] = useStyleFilters();
+  const { isLoading, tshirts } = useTshirts(selectedStyles);
   return (
     <>
+      <StyleFilters />
       <AppBar>
         <Toolbar>
           <Typography variant="h6" component="h1">
