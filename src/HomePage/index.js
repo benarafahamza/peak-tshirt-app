@@ -1,15 +1,5 @@
-import { Mail } from "@mui/icons-material";
 import { useTshirts } from "core/hooks";
-import {
-  AppBar,
-  Badge,
-  Box,
-  CircularProgress,
-  Grid,
-  IconButton,
-  Toolbar,
-  Typography,
-} from "@mui/material";
+import { CircularProgress, Grid } from "@mui/material";
 import React from "react";
 import ThirtCard from "../TshirtCard";
 import StyleFilters from "StyleFilters";
