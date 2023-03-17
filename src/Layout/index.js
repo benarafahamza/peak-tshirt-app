@@ -9,15 +9,18 @@ import {
 } from "@mui/material";
 import React from "react";
 import { Outlet } from "react-router";
+import { Link } from "react-router-dom";
 
 export default function Layout() {
   return (
     <>
       <AppBar>
         <Toolbar>
-          <Typography variant="h6" component="h1">
-            Peak Shirt
-          </Typography>
+          <Link to="/">
+            <Typography variant="h6" component="h1">
+              Peak Shirt
+            </Typography>
+          </Link>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { md: "flex" } }}>
             <IconButton
