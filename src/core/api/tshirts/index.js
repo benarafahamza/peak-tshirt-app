@@ -8,11 +8,15 @@ const API_BASE_URL = config.get(
 
 export const tshirts = {
   getList: (selectedStyles) => () => {
-    const tshirtRoute = new URL("/tshirts", API_BASE_URL);
-    const { searchParams } = tshirtRoute;
-    selectedStyles.forEach((styleId) => {
-      searchParams.append("styleId", styleId);
-    });
-    return fetch(tshirtRoute).then(responseToJson);
+    let tshirtRouteApi = `${API_BASE_URL}/tshirts`;
+
+    if (selectedStyles.size > 0) {
+      const queryString = new URLSearchParams(
+        [...selectedStyles].map((s) => ["styleId", s])
+      );
+      tshirtRouteApi = tshirtRouteApi + "?" + queryString;
+    }
+
+    return fetch(tshirtRouteApi).then(responseToJson);
   },
 };
