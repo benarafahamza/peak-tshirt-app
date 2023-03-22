@@ -19,4 +19,11 @@ export const tshirts = {
 
     return fetch(tshirtRouteApi).then(responseToJson);
   },
+  getOne:
+    ({ id }) =>
+    () => {
+      const tshirtRouteApi = `${API_BASE_URL}/tshirts/${id}`;
+
+      return fetch(tshirtRouteApi).then(responseToJson);
+    },
 };
