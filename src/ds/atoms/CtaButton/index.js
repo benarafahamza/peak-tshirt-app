@@ -5,7 +5,7 @@ import { Button } from "@mui/material";
  * @example
  * <CtaButton startIcon={<AddShoppingCart />} fullWidth> Add To cart</ctaButton>
  */
-export default function CtaButton({ children, fullWidth, startIcon }) {
+export default function CtaButton({ children, fullWidth, startIcon, ...rest }) {
   return (
     <Button
       variant="contained"
@@ -13,6 +13,7 @@ export default function CtaButton({ children, fullWidth, startIcon }) {
       size="large"
       startIcon={startIcon}
       fullWidth={fullWidth}
+      {...rest}
     >
       {children}
     </Button>

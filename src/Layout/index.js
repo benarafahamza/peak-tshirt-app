@@ -1,4 +1,4 @@
-import { Mail } from "@mui/icons-material";
+import { ShoppingCart, ShoppingCartOutlined } from "@mui/icons-material";
 import {
   AppBar,
   Badge,
@@ -7,11 +7,14 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
+import { useCart } from "core/contexts/CartContext";
 import React from "react";
 import { Outlet } from "react-router";
 import { Link } from "react-router-dom";
 
 export default function Layout() {
+  const [{ cart, isCartEmpty, cartItemsQuantity }] = useCart();
+
   return (
     <>
       <AppBar>
@@ -30,8 +33,8 @@ export default function Layout() {
               LinkComponent={Link}
               to="/cart"
             >
-              <Badge badgeContent={4} color="error">
-                <Mail />
+              <Badge badgeContent={cartItemsQuantity} color="primary">
+                {isCartEmpty ? <ShoppingCartOutlined /> : <ShoppingCart />}
               </Badge>
             </IconButton>
           </Box>

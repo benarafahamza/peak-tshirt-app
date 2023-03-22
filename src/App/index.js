@@ -15,6 +15,7 @@ import TshirtPage from "TshirtPage";
 import Layout from "Layout";
 import ErrorPage from "ErrorPage";
 import CartPage from "CartPage";
+import { CartProvider } from "core/contexts/CartContext";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -51,8 +52,10 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <FilterProvider>
-          <CssBaseline />
-          <RouterProvider router={router} />
+          <CartProvider>
+            <CssBaseline />
+            <RouterProvider router={router} />
+          </CartProvider>
         </FilterProvider>
       </ThemeProvider>
     </QueryClientProvider>
