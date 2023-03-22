@@ -12,8 +12,8 @@ import {
 import { CtaButton } from "ds/atoms";
 import { BottomCallToActions } from "ds/molecules";
 import Price from "ds/atoms/Price";
-import { node, number } from "prop-types";
-import { CartProvider, useCart } from "core/contexts/CartContext";
+import { number } from "prop-types";
+import { useCart } from "core/contexts/CartContext";
 
 const TotalPrice = ({ price }) => (
   <Typography>
