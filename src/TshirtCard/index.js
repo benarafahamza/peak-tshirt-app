@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 
-import Price from "Price";
+import Price from "ds/atoms/Price";
 
 import { string, number, oneOf } from "prop-types";
 import { Link } from "react-router-dom";
