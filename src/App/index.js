@@ -14,6 +14,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import TshirtPage from "TshirtPage";
 import Layout from "Layout";
 import ErrorPage from "ErrorPage";
+import CartPage from "CartPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/tshirt/:tshirtId",
         element: <TshirtPage />,
+      },
+      {
+        path: "cart",
+        element: <CartPage />,
       },
     ],
   },
