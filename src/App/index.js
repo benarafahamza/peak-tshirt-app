@@ -13,6 +13,7 @@ import theme from "./theme";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import TshirtPage from "TshirtPage";
 import Layout from "Layout";
+import ErrorPage from "ErrorPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+        errorElement: <ErrorPage />,
       },
       {
         path: "/tshirt/:tshirtId",
